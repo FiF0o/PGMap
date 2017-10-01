@@ -8,6 +8,10 @@ import './App.css';
 import { tokens } from './config/tokens';
 
 
+//TODO Add { ConnectedRouter } and {history} as prop
+// import { ConnectedRouter } from 'react-router-redux';
+// import { history as RouterHistory } from '../../store';
+
 const MyMapComponent = compose(
   withProps({
     googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${tokens.GOOLE_API_TOKEN}&v=3.exp&libraries=geometry,drawing,places`,
@@ -26,7 +30,11 @@ const MyMapComponent = compose(
     {
       props.isMarkerShown && 
       <Marker 
-      position={{ lat: -34.397, lng: 150.644 }}
+        position={{ lat: -34.397, lng: 150.644 }}
+        defaultIcon={null}
+        onMouseDown={() => console.log('down')}
+        title={'Title here'}
+        clickable={true}
       />
     }
   </GoogleMap>
@@ -39,13 +47,10 @@ class App extends Component {
         <div className="App">
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <h2>Welcome to React</h2>
+            <h2>Welcome to Blabla</h2>
           </div>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
-          <MyMapComponent isMarkerShown />
           <RaisedButton label="Material UI" />
+          <MyMapComponent isMarkerShown />
         </div>
       </MuiThemeProvider>
     );
